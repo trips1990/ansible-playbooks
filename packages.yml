@@ -1,0 +1,20 @@
+---
+- hosts: testing
+  become: no
+  tasks:
+  - name: configuring spacewalk repository
+    yum_repository:
+         name: spacewalk-client
+         description: install spacewalk client
+         file: spacewalk-client
+         baseurl: http://69.26.45.164/templates/spacewalk-client6/
+         enabled: yes
+         gpgcheck: no
+
+#    - name: installing packages
+#      yum:
+#        name: ipmitool
+#        state: latest
+  - name: installing packages
+    shell: yum -y install rhn-client-tools rhn-check rhn-setup rhnsd m2crypto yum-rhn-plugin
+

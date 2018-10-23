@@ -1,0 +1,13 @@
+---
+- hosts: virtela
+  tasks:
+  - name: RedHat | disable ipv6 in sysconfig/network
+    lineinfile:
+      dest: /etc/sysconfig/rhn/up2date
+      regexp: "^{{ item.regexp }}"
+      line: "{{ item.line }}"
+      backup: yes
+      create: yes
+    with_items:
+    - { regexp: 'serverURL=.*', line: 'serverURL=http://207.179.18.51/XMLRPC' }
+

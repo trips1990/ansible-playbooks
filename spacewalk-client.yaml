@@ -1,0 +1,5 @@
+---
+- hosts: missing
+  roles:
+     - spacewalk6
+
